@@ -1,6 +1,7 @@
 import socket
 import sys
 import io
+
 #Aother of NetCore:Preacher
 
 #this appucation is for sudying only and not ment for black hat use.
@@ -26,10 +27,9 @@ class NetCore:
 		def ReseveFromeServer(bufferSize):
 			Message = str(NetCore.Sockets.s.recv(bufferSize).decode('ASCII'))
 			return Message
-
-		
 	#IOInterface is for opening file and editting them
 	class IOInterface:
+
 		pass
 	#ConsoleSystemInterface is for all the output to the console
 	class ConsoleSystemInterface:
