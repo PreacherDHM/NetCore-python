@@ -16,6 +16,8 @@ import io
 class NetCore:
 	#Sockets is the interface to the web and all the payload are diploid
 	class Sockets:
+
+
 		s = socket.socket()
 		#Connechion Start the Connechion
 		def Connechion(Socket):
@@ -27,13 +29,14 @@ class NetCore:
 		def ReseveFromeServer(bufferSize):
 			Message = str(NetCore.Sockets.s.recv(bufferSize).decode('ASCII'))
 			return Message
-	#IOInterface is for opening file and editting them
-	class IOInterface:
 
-		pass
-	#ConsoleSystemInterface is for all the output to the console
-	class ConsoleSystemInterface:
-		pass
+
+
+
+
+
+
+	
 
 def Main(args):
 	pass
