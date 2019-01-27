@@ -31,6 +31,9 @@ class Sockets:
 		Message = str(NetCore.Sockets.s.recv(bufferSize).decode('ASCII'))
 		return Message
 
+class IoInterface():
+	def Connsole():
+		pass
 
     
 
