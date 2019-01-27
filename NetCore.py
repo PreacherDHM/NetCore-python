@@ -15,11 +15,11 @@ import io
 
 
 #Sockets is the interface to the web and all the payload are diploid
-s = socket.socket()
+
 class Sockets:
 
 
-	
+	#s = socket.socket()
 	def CloseSocket():
          s.Close()
 	def Connechion(Socket):
@@ -31,6 +31,15 @@ class Sockets:
 	def ReseveFromeServer(bufferSize):
 		Message = str(NetCore.Sockets.s.recv(bufferSize).decode('ASCII'))
 		return Message
+	def GetRawPacket():
+		# sr = socket.socket(socket.AF_INET,socket.IPPROTO_RAW,socket.IPPROTO_IP)
+		# sr.bind(("10.0.0.37",22))
+		# sr.setsockopt(socket.IPPROTO_IP,socket.IP_HDRINCL,1)
+		# sr.ioctl(socket.SIO_RCVALL,socket.RCVALL_ON)
+		
+		# while True:
+		# 	print(sr.recvfrom(65565))
+		pass
 
 class IoInterface():
 	#this runs the Console in the program
@@ -70,11 +79,3 @@ class IoInterface():
 			#Send Packet
 			if command == CommandList[3]:
 				pass
-			
-
-
-
-
-    
-
-
