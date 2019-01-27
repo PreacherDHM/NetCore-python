@@ -15,10 +15,11 @@ import io
 
 
 #Sockets is the interface to the web and all the payload are diploid
+s = socket.socket()
 class Sockets:
 
 
-	s = socket.socket()
+	
 	def CloseSocket():
          s.Close()
 	def Connechion(Socket):
@@ -32,16 +33,47 @@ class Sockets:
 		return Message
 
 class IoInterface():
+	#this runs the Console in the program
 	def Connsole():
+
 		while True:
+
 			command = input('$')
 			CommandList = ['Port Scan','Connect','Start Server','Send Packet']
+			
 
+			#Help
 			if command == 'help':
 				i = 0
 				while i < len(CommandList):
 					print(CommandList[i])
 					i += 1
+			if command == 'quit':
+				quit()
+			#Port Scan
+			if command == CommandList[0]:
+				pass
+			#Connect
+			if command == CommandList[1]:
+				try:
+					Ip = input('IP:')
+					port = int(input('Port'))
+					Sockets.Connechion((Ip,Port))
+				except KeyboardInterrupt:
+					Sockets.CloseSocket()
+					print('Stoped')
+				except:
+					print('Connection was a falear')
+			#Start Server
+			if command == CommandList[2]:
+				pass
+			#Send Packet
+			if command == CommandList[3]:
+				pass
+			
+
+
+
 
     
 
