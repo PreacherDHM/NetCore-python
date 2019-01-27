@@ -33,7 +33,15 @@ class Sockets:
 
 class IoInterface():
 	def Connsole():
-		pass
+		while True:
+			command = input('$')
+			CommandList = ['Port Scan','Connect','Start Server','Send Packet']
+
+			if command == 'help':
+				i = 0
+				while i < len(CommandList):
+					print(CommandList[i])
+					i += 1
 
     
 
