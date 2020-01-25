@@ -1,6 +1,7 @@
 import socket
 import sys
 import io
+import threading
 
 #Aother of NetCore:Preacher
 
@@ -31,15 +32,38 @@ class Sockets:
 	def ReseveFromeServer(bufferSize):
 		Message = str(NetCore.Sockets.s.recv(bufferSize).decode('ASCII'))
 		return Message
-	def GetRawPacket():
-		# sr = socket.socket(socket.AF_INET,socket.IPPROTO_RAW,socket.IPPROTO_IP)
-		# sr.bind(("10.0.0.37",22))
-		# sr.setsockopt(socket.IPPROTO_IP,socket.IP_HDRINCL,1)
-		# sr.ioctl(socket.SIO_RCVALL,socket.RCVALL_ON)
+	def PortScan(ip,minPort,MaxPort,curentThread):
+		curentPort = minPort
+		while minPort < MaxPort:
+			curentPort += 1
+			try:
+				s = socket.socket()
+				s.connect((ip,port))
+				print('Connected to port:',port,'Thread:',curentThread)
+				s.close()
+			except:
+				print(curentPort)
+
+	def ThreadedPortScan(ip,minPort,maxPort,ThreadCount):
+		curentThreadPort = minPort
+		curentThreadCount = 0
 		
-		# while True:
-		# 	print(sr.recvfrom(65565))
-		pass
+
+		while curentThreadCount <= ThreadCount:
+			#curentThreadPort += 1
+			curentThreadCount += 1
+
+			print('\rThread:',curentThreadCount,'Ports:',curentThreadCount * maxPort,end = '\r')
+
+			pst = threading.Thread(target = Sockets.PortScan,args=(ip, curentThreadCount * minPort,curentThreadCount * maxPort,curentThreadCount))
+			pst.start()
+
+			#Sockets.PortScan(ip,curentThreadPort)
+			
+			
+			
+		
+		#pass
 
 class IoInterface():
 	#this runs the Console in the program
